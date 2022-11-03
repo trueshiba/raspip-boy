@@ -61,6 +61,13 @@ class Health:
         text = font.render(self.text, False, TEXT_COL)
         surf.blit(text, (self.x + 5, self.y))
 
+        #Update Data in Health File
+        f = open("health.txt", "w")
+        f.write("File that contains Health stats. First number is current health, second number is max health \n")
+        f.write(f'{self.health_current}\n')
+        f.write(f"{self.health_max}\n")
+        f.close()
+
         update = True
 
         return update

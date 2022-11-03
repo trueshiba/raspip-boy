@@ -1,0 +1,4 @@
+File that contains Level stats. [Level, Current Exp, Needed Exp] 
+1
+0
+10

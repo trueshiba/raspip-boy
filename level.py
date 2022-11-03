@@ -94,6 +94,20 @@ def getExp():
 def getNeededExp():
     return neededExp
 
+#Set Functions
+def setLevel(lvl):
+    global level
+    level = lvl
+
+def setExp(xp):
+    global exp
+    exp = xp
+
+
+def setNeededExp(ndxp):
+    global neededExp
+    neededExp = ndxp
+
 
 # Credit to [MISH]
 '''
@@ -114,9 +128,20 @@ class Level:
         self.y = 300
         self.width = 265
         self.height = 35
-        self.level = 1
-        self.exp = 0
-        self.exp_total = 0
+
+        #Read Previous Stats from File
+        f = open("level.txt", "r")
+        f.readline()
+        self.level = int(f.readline())
+        self.exp = int(f.readline())
+        self.exp_total = int(f.readline())
+        f.close()
+
+        #Set Global Variables
+        setNeededExp(self.exp_total)
+        setExp(self.exp)
+        setLevel(self.level)
+
         self.text = f'LEVEL {self.level}'
 
     def draw(self, surf):
@@ -148,23 +173,32 @@ class Level:
 
         # Print Level Bar
         draw_shield_bar(surf, 170, 304, self.exp, self.exp_total)
+
+        # Update Data in Level File
+        f = open("level.txt", "w")
+        f.write("File that contains Level stats. [Level, Current Exp, Needed Exp] \n")
+        f.write(f'{self.level}\n')
+        f.write(f"{self.exp}\n")
+        f.write(f"{self.exp_total}\n")
+        f.close()
+
         update = True
 
         return update
 
     # [For Testing Purposes Only]
-    # def is_pressed(self, surf):
-    #     action = False
-    #
-    #     # get mouse position
-    #
-    #     pos = pygame.mouse.get_pos()
-    #     # check mouseover and clicked conditions
-    #     if self.x < pos[0] < self.x + self.width:
-    #         if self.y < pos[1] < self.y + self.height:
-    #             action = True
-    #
-    #     gainExp()
-    #
-    #     #send result
-    #     return action
+    def is_pressed(self, surf):
+        action = False
+
+        # get mouse position
+
+        pos = pygame.mouse.get_pos()
+        # check mouseover and clicked conditions
+        if self.x < pos[0] < self.x + self.width:
+            if self.y < pos[1] < self.y + self.height:
+                action = True
+
+        gainExp()
+
+        #send result
+        return action
