@@ -11,7 +11,13 @@ The UI for the PipBoy
     NOTES:
         Need to Implement STAT, INV, DATA, MAP, RADIO Classes
         Currently set to running on Desktop, be-sure to check fonts 
-        before transferring to Raspberry Pi 
+        before transferring to Raspberry Pi
+        Have it so that User Data is written onto a file, this includes:
+        Steps
+        Levels
+        Max Health
+        (maybe other stuff)
+        Then have this stuff visible on the Data Tab  
 '''
 
 pygame.init()
