@@ -1,6 +1,18 @@
 import pygame
 import pygame_gui
 import button
+import level
+
+# Credit to [MISH]
+'''
+The UI for the PipBoy
+    Basically the main for the PipBoy, will call most classes and functions in here
+    Handles mainly the display and inputs from the user.
+    NOTES:
+        Need to Implement STAT, INV, DATA, MAP, RADIO Classes
+        Currently set to running on Desktop, be-sure to check fonts 
+        before transferring to Raspberry Pi 
+'''
 
 pygame.init()
 
@@ -35,6 +47,9 @@ inv_button = button.Button((0, 0, 0, 0), 105, 10, 90, 30, "INV")
 data_button = button.Button((0, 0, 0, 0), 195, 10, 90, 30, "DATA")
 map_button = button.Button((0, 0, 0, 0), 285, 10, 90, 30, "MAP")
 radio_button = button.Button((0, 0, 0, 0), 375, 10, 90, 30, "RADIO")
+
+# create level
+level_bar = level.Level()
 
 # define background image
 overlay = pygame.image.load("overlay.png")
@@ -112,6 +127,12 @@ while running:
             data_flag = False
             map_flag = False
             radio_flag = True
+
+        level_bar.update_level(window_surface)
+
+        # [For Testing Purposes Only]
+        # if level_bar.is_pressed(window_surface):
+        #     print("EXP")
 
     #Execute screens
     if stat_flag:

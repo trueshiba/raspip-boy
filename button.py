@@ -1,5 +1,6 @@
 import pygame
 
+
 # button class
 def draw_rect_alpha(surf, color, rect):
     shape = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
@@ -7,7 +8,17 @@ def draw_rect_alpha(surf, color, rect):
     surf.blit(shape, rect)
 
 
-class Button():
+# Credit to [MISH]
+'''
+The Button Class for the PipBoy
+    Simple Button class that allows for menu like button screen
+    Each button will return a true or false bool if the user presses it
+    NOTES:
+        None so Far
+'''
+
+
+class Button:
     def __init__(self, color, x, y, width, height, text=''):
         self.color = color
         self.x = x
@@ -19,9 +30,8 @@ class Button():
 
     def draw(self, surf, outline=None):
         if outline:
-            pygame.draw.rect(surf, outline, self.x-2, self.y-2, self.width+4, self.height+4)
-        self.color = (4, 28, 56, 0)
-        #rect = pygame.draw.rect(surf, self.color, (self.x, self.y, self.width, self.height), 0)
+            pygame.draw.rect(surf, outline, self.x - 2, self.y - 2, self.width + 4, self.height + 4)
+        # rect = pygame.draw.rect(surf, self.color, (self.x, self.y, self.width, self.height), 0)
         rect = (self.x, self.y), (self.width, self.height)
         draw_rect_alpha(surf, self.color, rect)
         if self.text != '':
@@ -29,7 +39,8 @@ class Button():
 
             font = pygame.font.SysFont('arial', 20)
             text = font.render(self.text, False, TEXT_COL)
-            surf.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
+            surf.blit(text, (
+                self.x + (self.width / 2 - text.get_width() / 2), self.y + (self.height / 2 - text.get_height() / 2)))
 
     def is_pressed(self, surf):
 
@@ -45,5 +56,5 @@ class Button():
             if self.y < pos[1] < self.y + self.height:
                 action = True
 
-        #send result
+        # send result
         return action
