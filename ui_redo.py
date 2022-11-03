@@ -68,24 +68,13 @@ data_flag = False
 map_flag = False
 radio_flag = False
 
+#Shape Function [Testing Purpose only] - will later be removed once classes are made for the different screens
+def draw_shape(color):
+    pygame.draw.rect(window_surface, color, (100, 100, 20, 20))
+
 
 # game time!!
 running = True
-
-
-# ERASE FUNCTION - Note Rect objects store and manipulate rectangular areas
-def erase(surf, color, rect):
-    shape = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
-    pygame.draw.rect(shape, color, shape.get_rect())
-    surf.blit(shape, rect)
-
-#Shape Functions - will later be removed once classes are made for the different screens
-def draw_shape():
-    pygame.draw.rect(window_surface, RED, (100, 100, 20, 20))
-
-def draw_diff_shape():
-    pygame.draw.rect(window_surface, ORANGE, (200, 200, 20, 20))
-
 
 while running:
 
@@ -95,7 +84,6 @@ while running:
     if menu_state == "main":
         # draw pause screen buttons
         if stat_button.is_pressed(window_surface):
-            print("STAT")
             stat_flag = True
             inv_flag = False
             data_flag = False
@@ -103,7 +91,6 @@ while running:
             radio_flag = False
 
         if inv_button.is_pressed(window_surface):
-            print("INV")
             stat_flag = False
             inv_flag = True
             data_flag = False
@@ -111,7 +98,6 @@ while running:
             radio_flag = False
 
         if data_button.is_pressed(window_surface):
-            print("DATA")
             stat_flag = False
             inv_flag = False
             data_flag = True
@@ -119,7 +105,6 @@ while running:
             radio_flag = False
 
         if map_button.is_pressed(window_surface):
-            print("MAP")
             stat_flag = False
             inv_flag = False
             data_flag = False
@@ -127,7 +112,6 @@ while running:
             radio_flag = False
 
         if radio_button.is_pressed(window_surface):
-            print("RADIO")
             stat_flag = False
             inv_flag = False
             data_flag = False
@@ -142,21 +126,22 @@ while running:
 
     #Execute screens
     if stat_flag:
-        draw_shape()
+        draw_shape(RED)
 
     if inv_flag:
-        draw_diff_shape()
+        draw_shape(ORANGE)
 
     if data_flag:
-        draw_shape()
+        draw_shape((15,190,20))
 
     if map_flag:
-        draw_diff_shape()
+        draw_shape((255, 255, 255))
 
     if radio_flag:
-        draw_shape()
+        draw_shape((0, 100, 150))
 
     # print out the buttons!!
+    # we can change this to detect like- a button push or the I/O Button input
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:

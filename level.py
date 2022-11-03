@@ -45,7 +45,7 @@ NOTES:
 
 # Global Variables
 exp = 0
-level = 0
+level = 1
 neededExp = 10
 NEXTLEVEL = 2
 
