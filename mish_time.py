@@ -1,5 +1,4 @@
 import pygame
-import level
 import datetime
 
 
@@ -12,47 +11,39 @@ def draw_rect_alpha(surf, color, rect):
 
 # Credit to [MISH]
 '''
-The Health Class for the PipBoy
-    I think the original idea was that the Health on the PipBoy would lessen 
-    as the day goes on
+The Time Class for the PipBoy
+    Instead of displaying AP, the Pip boy will display the current time in the corner
+    Since we dont have any interesting way of using AP in our Raspberry Po
     NOTES:
-        Plan is to have health tied to time...some how
 '''
 
 
-class Health:
+class Time:
     def __init__(self):
         self.color = (51, 109, 48, 200)
-        self.x = 10
+        self.x = 380
         self.y = 300
         self.width = 95
         self.height = 35
-        self.health_max = 115
-        self.health_current = 115
-        self.text = f'HP {self.health_max} / {self.health_current}'
-
-        #CONSTANT
-        self.DIVIDER = 12.5217
+        self.hour = "00"
+        self.minute = "00"
+        self.meridiem = "AM"
+        self.text = f'{self.hour} : {self.minute} {self.meridiem}'
 
     def draw(self, surf):
         rect = (self.x, self.y), (self.width, self.height)
         draw_rect_alpha(surf, self.color, rect)
 
-    def update_health(self, surf):
+    def update_time(self, surf):
         self.draw(surf)
         update = False
 
         # Define the time
         time = datetime.datetime.now()
-        hour = int(time.strftime("%H"))
-        minute = int(time.strftime("%M"))
-        total_day = (hour * 60) + minute
-
-        # Set health based on current time
-        # Check with group about how they want the time to be split up :)
-        if total_day % 30 >= 1:
-            self.health_current = self.health_max - int((total_day // self.DIVIDER))
-            self.text = f'HP {self.health_current} / {self.health_max}'
+        self.hour = (time.strftime("%H"))
+        self.minute = (time.strftime("%M"))
+        self.meridiem = (time.strftime("%p"))
+        self.text = f'     {self.hour} : {self.minute} {self.meridiem}'
 
         # Print Health Amount
         TEXT_COL = (100, 252, 127, 255)

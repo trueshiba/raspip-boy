@@ -1,7 +1,9 @@
 import pygame
 import pygame_gui
 import button
+import health
 import level
+import mish_time
 
 # Credit to [MISH]
 '''
@@ -18,6 +20,8 @@ The UI for the PipBoy
         Max Health
         (maybe other stuff)
         Then have this stuff visible on the Data Tab  
+        Update Level and Health so that they send user data over, t=so it can be written on a file.
+        Increase size of Level and Health
 '''
 
 pygame.init()
@@ -56,6 +60,12 @@ radio_button = button.Button((0, 0, 0, 0), 375, 10, 90, 30, "RADIO")
 
 # create level
 level_bar = level.Level()
+
+#create health
+health_bar = health.Health()
+
+#create time
+time_bar = mish_time.Time()
 
 # define background image
 overlay = pygame.image.load("overlay.png")
@@ -119,6 +129,8 @@ while running:
             radio_flag = True
 
         level_bar.update_level(window_surface)
+        health_bar.update_health(window_surface)
+        time_bar.update_time(window_surface)
 
         # [For Testing Purposes Only]
         # if level_bar.is_pressed(window_surface):

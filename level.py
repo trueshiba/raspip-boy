@@ -17,7 +17,7 @@ def draw_shield_bar(surf, x, y, xp, xp_total):
 
     # Size of the bar
     BAR_LENGTH = 200
-    BAR_HEIGHT = 10
+    BAR_HEIGHT = 12
 
     # the actual bar itself
     fill = (xp / xp_total) * BAR_LENGTH
@@ -28,7 +28,7 @@ def draw_shield_bar(surf, x, y, xp, xp_total):
     color = GREEN
 
     # draws the bar :D
-    pygame.draw.rect(surf, color, fill_rect)
+    pygame.draw.rect(surf, BORDER, fill_rect)
     pygame.draw.rect(surf, BORDER, outline_rect, 2)
 
 
@@ -112,12 +112,12 @@ class Level:
         self.color = (51, 109, 48, 200)
         self.x = 110
         self.y = 300
-        self.width = 260
-        self.height = 30
+        self.width = 265
+        self.height = 35
         self.level = 1
         self.exp = 0
         self.exp_total = 0
-        self.text = f'Level {self.level}'
+        self.text = f'LEVEL {self.level}'
 
     def draw(self, surf):
         rect = (self.x, self.y), (self.width, self.height)
@@ -137,7 +137,7 @@ class Level:
         self.exp = getExp()
         self.exp_total = getNeededExp()
 
-        self.text = f'Level {self.level}'
+        self.text = f'LEVEL {self.level}'
 
         # Print Level Amount
         TEXT_COL = (100, 252, 127, 255)
@@ -147,7 +147,7 @@ class Level:
         surf.blit(text, (self.x + 5, self.y))
 
         # Print Level Bar
-        draw_shield_bar(surf, 165, 305, self.exp, self.exp_total)
+        draw_shield_bar(surf, 170, 304, self.exp, self.exp_total)
         update = True
 
         return update
