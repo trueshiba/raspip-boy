@@ -1,6 +1,12 @@
 import pygame
 
 # button class
+def draw_rect_alpha(surf, color, rect):
+    shape = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
+    pygame.draw.rect(shape, color, shape.get_rect())
+    surf.blit(shape, rect)
+
+
 class Button():
     def __init__(self, color, x, y, width, height, text=''):
         self.color = color
@@ -14,15 +20,20 @@ class Button():
     def draw(self, surf, outline=None):
         if outline:
             pygame.draw.rect(surf, outline, self.x-2, self.y-2, self.width+4, self.height+4)
-
-        pygame.draw.rect(surf, self.color, (self.x, self.y, self.width, self.height), 0)
-
+        self.color = (4, 28, 56, 0)
+        #rect = pygame.draw.rect(surf, self.color, (self.x, self.y, self.width, self.height), 0)
+        rect = (self.x, self.y), (self.width, self.height)
+        draw_rect_alpha(surf, self.color, rect)
         if self.text != '':
-            font = pygame.font.SysFont('arial', 60)
-            text = font.render(self.text, 1, (0, 0, 0))
+            TEXT_COL = (100, 252, 127, 255)
+
+            font = pygame.font.SysFont('arial', 20)
+            text = font.render(self.text, False, TEXT_COL)
             surf.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
 
-    def is_pressed(self):
+    def is_pressed(self, surf):
+
+        self.draw(surf)
 
         action = False
 
