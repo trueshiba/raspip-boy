@@ -4,6 +4,7 @@ import button
 import health
 import level
 import mish_time
+import data
 
 # Credit to [MISH]
 '''
@@ -14,14 +15,9 @@ The UI for the PipBoy
         Need to Implement STAT, INV, DATA, MAP, RADIO Classes
         Currently set to running on Desktop, be-sure to check fonts 
         before transferring to Raspberry Pi
-        Have it so that User Data is written onto a file, this includes:
-        Steps
-        Levels
-        Max Health
-        (maybe other stuff)
-        Then have this stuff visible on the Data Tab  
-        Update Level and Health so that they send user data over, t=so it can be written on a file.
-        Increase size of Level and Health
+        - Reconfigure Text to display correctly on the data 
+          screen for the [Pip Boy]
+        - Reconfigure the deco lines for the [Pip Boy]
 '''
 
 pygame.init()
@@ -57,6 +53,7 @@ inv_button = button.Button((0, 0, 0, 0), 105, 10, 90, 30, "INV")
 data_button = button.Button((0, 0, 0, 0), 195, 10, 90, 30, "DATA")
 map_button = button.Button((0, 0, 0, 0), 285, 10, 90, 30, "MAP")
 radio_button = button.Button((0, 0, 0, 0), 375, 10, 90, 30, "RADIO")
+exit_button = button.Button((0, 0, 0, 0), 460, 10, 10, 30, "x")
 
 # create level
 level_bar = level.Level()
@@ -78,9 +75,24 @@ data_flag = False
 map_flag = False
 radio_flag = False
 
+#create Data Menu
+data_menu = data.Data()
+
 #Shape Function [Testing Purpose only] - will later be removed once classes are made for the different screens
 def draw_shape(color):
     pygame.draw.rect(window_surface, color, (100, 100, 20, 20))
+
+#Menu Decro function - draws the little lines on the menu
+def menu_deco(start, end):
+    # First half
+    pygame.draw.line(window_surface, BORDER, (start, 23), (start + 5, 23), width=1)
+    pygame.draw.line(window_surface, BORDER, (start, 23), (start, 38), width=1)
+    pygame.draw.line(window_surface, BORDER, (10, 38), (start, 38), width=1)
+
+    # Second half
+    pygame.draw.line(window_surface, BORDER, (end - 5, 23), (end, 23), width=1)
+    pygame.draw.line(window_surface, BORDER, (end, 23), (end, 38), width=1)
+    pygame.draw.line(window_surface, BORDER, (end, 38), (470, 38), width=1)
 
 
 # game time!!
@@ -128,6 +140,9 @@ while running:
             map_flag = False
             radio_flag = True
 
+        if exit_button.is_pressed(window_surface):
+            running = False
+
         level_bar.update_level(window_surface)
         health_bar.update_health(window_surface)
         time_bar.update_time(window_surface)
@@ -139,18 +154,24 @@ while running:
     #Execute screens
     if stat_flag:
         draw_shape(RED)
+        menu_deco(30, 90)
 
     if inv_flag:
         draw_shape(ORANGE)
+        menu_deco(125, 173)
 
     if data_flag:
-        draw_shape((15,190,20))
+        draw_shape((15, 190, 20))
+        menu_deco(210, 268)
+        data_menu.menu(window_surface)
 
     if map_flag:
         draw_shape((255, 255, 255))
+        menu_deco(300, 357)
 
     if radio_flag:
         draw_shape((0, 100, 150))
+        menu_deco(380, 455)
 
     # print out the buttons!!
     # we can change this to detect like- a button push or the I/O Button input

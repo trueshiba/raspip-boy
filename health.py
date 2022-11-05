@@ -30,7 +30,7 @@ class Health:
         self.health_max = 115
         self.health_current = 115
         self.text = f'HP {self.health_max} / {self.health_current}'
-
+        self.time_increase =  0 #so program doesn't constantly open health.txt
         #CONSTANT
         self.DIVIDER = 12.5217
 
@@ -50,9 +50,12 @@ class Health:
 
         # Set health based on current time
         # Check with group about how they want the time to be split up :)
-        if total_day % 30 >= 1:
-            self.health_current = self.health_max - int((total_day // self.DIVIDER))
-            self.text = f'HP {self.health_current} / {self.health_max}'
+        if total_day > (self.time_increase + 10):
+            if total_day % 30 >= 1:
+                self.health_current = self.health_max - int((total_day // self.DIVIDER))
+                self.text = f'HP {self.health_current} / {self.health_max}'
+                self.time_increase = total_day
+                print(self.time_increase)
 
         # Print Health Amount
         TEXT_COL = (100, 252, 127, 255)
@@ -63,9 +66,8 @@ class Health:
 
         #Update Data in Health File
         f = open("health.txt", "w")
-        f.write("File that contains Health stats. First number is current health, second number is max health \n")
-        f.write(f'{self.health_current}\n')
-        f.write(f"{self.health_max}\n")
+        f.write(f'Current Health{self.health_current:>21}\n')
+        f.write(f"Maximum Health{self.health_max:>17}\n")
         f.close()
 
         update = True

@@ -1,3 +1,2 @@
-File that contains Health stats. First number is current health, second number is max health 
-56
-115
+Current Health                   38
+Maximum Health              115

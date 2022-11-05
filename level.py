@@ -12,7 +12,7 @@ def draw_rect_alpha(surf, color, rect):
 
 # draw level bar
 def draw_shield_bar(surf, x, y, xp, xp_total):
-    GREEN = (5, 69, 8)  # Change to a better one
+    #GREEN = (5, 69, 8)  no longer used
     BORDER = (88, 243, 100)
 
     # Size of the bar
@@ -25,7 +25,7 @@ def draw_shield_bar(surf, x, y, xp, xp_total):
     fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
 
     # Check what color the bar should be based on the points given
-    color = GREEN
+    #color = GREEN no longer used
 
     # draws the bar :D
     pygame.draw.rect(surf, BORDER, fill_rect)
@@ -131,11 +131,17 @@ class Level:
 
         #Read Previous Stats from File
         f = open("level.txt", "r")
-        f.readline()
-        self.level = int(f.readline())
-        self.exp = int(f.readline())
-        self.exp_total = int(f.readline())
-        f.close()
+
+        #Credit to 'AskPython'
+        # Use of isdigit() function to extract digits from a Python string
+        num = [int(x) for x in f.readline().split() if x.isdigit()]
+        self.level = num[0]
+
+        num = [int(x) for x in f.readline().split() if x.isdigit()]
+        self.exp = num[0]
+
+        num = [int(x) for x in f.readline().split() if x.isdigit()]
+        self.exp_total = num[0]
 
         #Set Global Variables
         setNeededExp(self.exp_total)
@@ -158,6 +164,13 @@ class Level:
             if Pedometer_Status:
                 gainExp()
 
+                # Update Data in Level File
+                f = open("level.txt", "w")
+                f.write(f'Current Level {self.level:>23}\n')
+                f.write(f"Current XP {self.exp:>26}\n")
+                f.write(f"XP Needed {self.exp_total:>25}\n")
+                f.close()
+
         self.level = getLevel()
         self.exp = getExp()
         self.exp_total = getNeededExp()
@@ -173,14 +186,6 @@ class Level:
 
         # Print Level Bar
         draw_shield_bar(surf, 170, 304, self.exp, self.exp_total)
-
-        # Update Data in Level File
-        f = open("level.txt", "w")
-        f.write("File that contains Level stats. [Level, Current Exp, Needed Exp] \n")
-        f.write(f'{self.level}\n')
-        f.write(f"{self.exp}\n")
-        f.write(f"{self.exp_total}\n")
-        f.close()
 
         update = True
 
