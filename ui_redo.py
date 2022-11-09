@@ -5,6 +5,8 @@ import health
 import level
 import mish_time
 import data
+import radio
+import animation
 
 # Credit to [MISH]
 '''
@@ -75,8 +77,9 @@ data_flag = False
 map_flag = False
 radio_flag = False
 
-#create Data Menu
+#create Menus
 data_menu = data.Data()
+radio_menu = radio.Radio()
 
 #Shape Function [Testing Purpose only] - will later be removed once classes are made for the different screens
 def draw_shape(color):
@@ -164,14 +167,13 @@ while running:
         draw_shape((15, 190, 20))
         menu_deco(210, 268)
         data_menu.menu(window_surface)
-
-    if map_flag:
-        draw_shape((255, 255, 255))
-        menu_deco(300, 357)
-
     if radio_flag:
         draw_shape((0, 100, 150))
         menu_deco(380, 455)
+        radio_menu.menu(window_surface)
+    if map_flag:
+        draw_shape((255, 255, 255))
+        menu_deco(300, 357)
 
     # print out the buttons!!
     # we can change this to detect like- a button push or the I/O Button input
@@ -181,7 +183,6 @@ while running:
                 running = False
         if event.type == pygame.QUIT:
             running = False
-
     pygame.display.update()
 
 pygame.quit()

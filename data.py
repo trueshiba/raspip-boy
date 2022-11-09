@@ -53,7 +53,6 @@ class Data():
         self.steps_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 60, self.menu_width, 30, "")
         self.random_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 90, self.menu_width, 30, "")
         self.random_button_2 = button.Button((0, 0, 0, 0), self.x_r, self.y + 120, self.menu_width, 30, "")
-
         # CONSTANT
         self.DIVIDER = 12.5217
 
@@ -91,8 +90,8 @@ class Data():
         else:
             display_text(surf, self.x_r + 5, self.y + (y_increase + 3), (100, 252, 127), text)
 
-    def menu(self, surf):
 
+    def menu(self, surf):
         self.tab(surf, 0, self.health_button, "health.txt", "Health")
         self.tab(surf, 30, self.level_button, "level.txt", "Levels")
         #self.tab(surf, 60, self.steps_button, "Steps")
