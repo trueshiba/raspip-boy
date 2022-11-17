@@ -1,0 +1,3 @@
+Burger,this is a burger
+Hotdog,you won't believe it, this is a hotdog
+Pizza,listen...it's pizza

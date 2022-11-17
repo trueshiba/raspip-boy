@@ -84,7 +84,7 @@ The Radio Class for the PipBoy
 '''
 
 
-class Radio():
+class Radio:
 
     def __init__(self):
         self.color = (51, 140, 48)
@@ -96,6 +96,7 @@ class Radio():
         self.height = 45
         self.fnv_button = button.Button((0, 0, 0, 0), self.x_r, self.y, self.menu_width, 30, "")
         self.backup_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 30, self.menu_width, 30, "")
+        self.off_button = button.Button((0,0,0,0), self.x_r, self.y + 120, self.menu_width, 30, "")
         self.radio_waves = animation.Animation()
 
         self.frequency = 35
@@ -180,7 +181,19 @@ class Radio():
             display_text(surf, self.x_r + 5, self.y + (y_increase + 3), (100, 252, 127), text)
             play_music(load_music(folder_name),  True, 0, folder_name)
 
+    def off(self, surf, y_increase, in_button, text=''):
+
+        if in_button.is_pressed(surf):
+            rect = (self.x_r, self.y + y_increase), (200, 30)
+            draw_rect_alpha(surf, self.main_color, rect)
+
+            display_text(surf, self.x_r + 5, self.y + (y_increase + 3), (52, 68, 52), text)
+            exit_radio()
+
+        else:
+            display_text(surf, self.x_r + 5, self.y + (y_increase + 3), (100, 252, 127), text)
 
     def menu(self, surf):
         self.tab(surf, 0, self.fnv_button, 30, "radio_FNV", "radio_FNV.txt", "Fallout New Vegas")
         self.tab(surf, 30, self.backup_button, 0, "radio_TEST", "radio_FNV.txt", "Fallout Old Vegas")
+        self.off(surf, 120, self.off_button, "Turn Off Radio")

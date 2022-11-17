@@ -1,0 +1,4 @@
+Showerbrush, s
+Toothbrush, s
+Soap Bar, t
+Dental Floss, f

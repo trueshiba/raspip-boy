@@ -39,7 +39,7 @@ The Data Class for the PipBoy
 '''
 
 
-class Data():
+class Data:
     def __init__(self):
         self.color = (51, 140, 48)
         self.main_color = (88, 243, 100, 180)

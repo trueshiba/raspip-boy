@@ -1,7 +1,7 @@
 import pygame
 import level
 import datetime
-
+import os
 
 # draw rect but with transparency
 def draw_rect_alpha(surf, color, rect):
@@ -18,6 +18,7 @@ The Health Class for the PipBoy
     NOTES:
         Plan is to have health tied to time...some how
 '''
+
 
 
 class Health:
@@ -65,9 +66,10 @@ class Health:
         surf.blit(text, (self.x + 5, self.y))
 
         #Update Data in Health File
-        f = open("health.txt", "w")
-        f.write(f'Current Health{self.health_current:>21}\n')
-        f.write(f"Maximum Health{self.health_max:>17}\n")
+        #assert os.path.isfile("health.txt")
+        with open("healths.txt", "w", encoding='utf-8') as f:
+            f.write(f'Current Health{self.health_current:>21}\n')
+            f.write(f"Maximum Health{self.health_max:>17}\n")
         f.close()
 
         update = True

@@ -1,5 +1,5 @@
 import pygame
-
+import time
 
 # button class
 def draw_rect_alpha(surf, color, rect):
@@ -56,5 +56,24 @@ class Button:
             if self.y < pos[1] < self.y + self.height:
                 action = True
 
+        return action
+
+    def is_pressed_promise(self, surf):
+
+        self.draw(surf)
+
+        action = False
+
+        # get mouse position
+        pos = pygame.mouse.get_pos()
+
+        # check mouseover and clicked conditions
+        if self.x < pos[0] < self.x + self.width:
+            if self.y < pos[1] < self.y + self.height:
+                if pygame.mouse.get_pressed()[0]:
+                    time.sleep(.2)
+                    action = True
+
         # send result
         return action
+

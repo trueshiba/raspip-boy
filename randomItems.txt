@@ -1,24 +1,10 @@
-.303 Round
-.50 Caliber
-5mm Round
-10mm Round
-Flare Gun
-Artillery Smoke Grenade
-Railway Rifle
-Sunglasses
-Wedding Ring
-Pocketed Metal Right Leg
-Painted Metal Helmet
-Military Fatigues
-Sharp Synth Right Arm
-Mutant Hound Chops
-Noodle Cup
-Potato Crisps
-Psycho
-Purified Water
-Acid
-Fiberglass
-Gear
-Plastic
-Circuitry
-Aluminum
+Showerbrush_g
+Toothbrush_g
+Soap Bar_g
+Dental Floss_g
+Burger_f
+Hotdog_f
+Pizza_f
+Toy_t
+Ball_t
+Gameboy_t

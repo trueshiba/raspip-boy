@@ -1,12 +1,7 @@
 import pygame
 import pygame_gui
 import button
-import health
-import level
-import mish_time
-import data
-import radio
-import animation
+import health, inventory, level, mish_time, data, radio, map
 
 # Credit to [MISH]
 '''
@@ -80,6 +75,8 @@ radio_flag = False
 #create Menus
 data_menu = data.Data()
 radio_menu = radio.Radio()
+inv_menu = inventory.Inventory()
+map_menu = map.Map()
 
 #Shape Function [Testing Purpose only] - will later be removed once classes are made for the different screens
 def draw_shape(color):
@@ -158,22 +155,27 @@ while running:
     if stat_flag:
         draw_shape(RED)
         menu_deco(30, 90)
+        map_menu.draw_map(window_surface, False)
 
     if inv_flag:
         draw_shape(ORANGE)
         menu_deco(125, 173)
-
+        inv_menu.menu(window_surface)
+        map_menu.draw_map(window_surface, False)
     if data_flag:
         draw_shape((15, 190, 20))
         menu_deco(210, 268)
         data_menu.menu(window_surface)
+        map_menu.draw_map(window_surface, False)
     if radio_flag:
         draw_shape((0, 100, 150))
         menu_deco(380, 455)
         radio_menu.menu(window_surface)
+        map_menu.draw_map(window_surface, False)
     if map_flag:
         draw_shape((255, 255, 255))
         menu_deco(300, 357)
+        map_menu.draw_map(window_surface, True)
 
     # print out the buttons!!
     # we can change this to detect like- a button push or the I/O Button input
