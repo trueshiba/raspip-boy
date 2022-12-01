@@ -4,6 +4,7 @@ img = pygame.image.load('maps.jpg')
 
 class Map:
     def __init__(self):
+
         self.color = (51, 109, 48, 200)
         self.x = 15
         self.y = 50
@@ -22,5 +23,7 @@ class Map:
             surf.blit(self.image, (self.x, self.y))
             pygame.display.flip()
 
+    def menu(self, surf):
+        self.draw_map(surf, True)
 
 

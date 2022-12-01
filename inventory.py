@@ -3,6 +3,7 @@ import level
 import random
 import button
 import datetime
+import virtual_pet as pet
 
 
 # let me know if I fix anything c:
@@ -139,7 +140,9 @@ class Inventory:
             # Use below if statements to call status function of the virtual pet
             # whenever it gets made and stuff
             # if item[-1] == 'f':
-            # if item[-1] == 'g':
+            #     pet.
+            # if item[-1] == 'h':
+            #
             # if item[-1] == 't':
 
             if item[0:len(item) - 2] == text:

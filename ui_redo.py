@@ -1,7 +1,7 @@
 import pygame
 import pygame_gui
 import button
-import health, inventory, level, mish_time, data, radio, map
+import health, inventory, level, mish_time, data, radio, map, virtual_pet
 
 # Credit to [MISH]
 '''
@@ -77,6 +77,31 @@ data_menu = data.Data()
 radio_menu = radio.Radio()
 inv_menu = inventory.Inventory()
 map_menu = map.Map()
+pet_menu = virtual_pet.Virtual_Pet()
+
+# frames
+image_sprite = [pygame.image.load('pip-animation/pip-0.png'),
+                     pygame.image.load('pip-animation/pip-1.png'),
+                     pygame.image.load('pip-animation/pip-2.png'),
+                     pygame.image.load('pip-animation/pip-3.png'),
+                     pygame.image.load('pip-animation/pip-4.png'),
+                     pygame.image.load('pip-animation/pip-5.png'),
+                     pygame.image.load('pip-animation/pip-6.png'),
+                     pygame.image.load('pip-animation/pip-7.png'),
+                     pygame.image.load('pip-animation/pip-8.png'),
+                     pygame.image.load('pip-animation/pip-9.png'),
+                     pygame.image.load('pip-animation/pip-10.png'),
+                     pygame.image.load('pip-animation/pip-11.png'),
+                     pygame.image.load('pip-animation/pip-12.png'),
+                     pygame.image.load('pip-animation/pip-13.png'),
+                     pygame.image.load('pip-animation/pip-14.png'),
+                     pygame.image.load('pip-animation/pip-15.png'),
+                     pygame.image.load('pip-animation/pip-16.png'),
+                     pygame.image.load('pip-animation/pip-17.png'),
+                     pygame.image.load('pip-animation/pip-18.png'),
+                     pygame.image.load('pip-animation/pip-19.png'),
+                     pygame.image.load('pip-animation/pip-20.png')
+                     ]
 
 #Menu Decor function - draws the little lines on the menu
 def menu_deco(start, end):
@@ -93,6 +118,8 @@ def menu_deco(start, end):
 
 # game time!!
 running = True
+clock = pygame.time.Clock()
+value = 0
 
 while running:
 
@@ -150,23 +177,31 @@ while running:
     #Execute screens
     if stat_flag:
         menu_deco(30, 90)
-        map_menu.draw_map(window_surface, False)
+        pet_menu.menu(window_surface)
 
+        clock.tick(10)
+
+        if value >= len(image_sprite):
+            value = 0
+
+        image = image_sprite[value]
+
+        window_surface.blit(image, (180, 50))
+
+        value += 1
+        #pet_menu.draw_bar(window_surface, True)
     if inv_flag:
         menu_deco(125, 173)
         inv_menu.menu(window_surface)
-        map_menu.draw_map(window_surface, False)
     if data_flag:
         menu_deco(210, 268)
         data_menu.menu(window_surface)
-        map_menu.draw_map(window_surface, False)
     if radio_flag:
         menu_deco(380, 455)
         radio_menu.menu(window_surface)
-        map_menu.draw_map(window_surface, False)
     if map_flag:
         menu_deco(300, 357)
-        map_menu.draw_map(window_surface, True)
+        map_menu.menu(window_surface)
 
     # print out the buttons!!
     # we can change this to detect like- a button push or the I/O Button input
