@@ -1,4 +1,5 @@
 import pygame
+import virtual_pet
 
 
 # draw rect but with transparency
@@ -48,6 +49,7 @@ exp = 0
 level = 1
 neededExp = 10
 NEXTLEVEL = 2
+vp = virtual_pet.Virtual_Pet()
 
 
 # Experience Function
@@ -65,7 +67,7 @@ def gainExp():
 
 
 # Level up
-# Reset the experience and level up
+# Reset the experience and level up (Also increase max stats)
 # Increase needed exp by the set amount (NEXTLEVEL)
 def levelUp():
     global exp, level, neededExp, NEXTLEVEL
@@ -80,6 +82,7 @@ def levelUp():
     print(level)
     print("Needed Exp: ")
     print(neededExp)
+    vp.increase_cap()
 
 
 # Get Functions
