@@ -92,7 +92,7 @@ class Data:
 
 
     def menu(self, surf):
-        self.tab(surf, 0, self.health_button, "health.txt", "Health")
+        self.tab(surf, 0, self.health_button, "healths.txt", "Health")
         self.tab(surf, 30, self.level_button, "level.txt", "Levels")
         #self.tab(surf, 60, self.steps_button, "Steps")
         self.tab(surf, 90, self.random_button, "random.txt", "General")

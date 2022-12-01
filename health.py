@@ -56,7 +56,12 @@ class Health:
                 self.health_current = self.health_max - int((total_day // self.DIVIDER))
                 self.text = f'HP {self.health_current} / {self.health_max}'
                 self.time_increase = total_day
-                print(self.time_increase)
+
+                with open("healths.txt", "w", encoding='utf-8') as f:
+                    f.write(f'Current Health{self.health_current:>21}\n')
+                    f.write(f"Maximum Health{self.health_max:>17}\n")
+                f.close()
+                print("file closed")
 
         # Print Health Amount
         TEXT_COL = (100, 252, 127, 255)
@@ -67,10 +72,6 @@ class Health:
 
         #Update Data in Health File
         #assert os.path.isfile("health.txt")
-        with open("healths.txt", "w", encoding='utf-8') as f:
-            f.write(f'Current Health{self.health_current:>21}\n')
-            f.write(f"Maximum Health{self.health_max:>17}\n")
-        f.close()
 
         update = True
 

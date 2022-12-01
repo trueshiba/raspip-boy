@@ -1,3 +1,10 @@
-toy,this is a toy
-ball, ball ball ball ball ball ball ball ball
-gameboy,this is a game boy
+bible,Words of wisdom /from wise old Mish,bible.png
+journal,Whose journal is this?,journal.png
+headphones,It's playing Beyonce!,headphones.png
+book,A book-haven't you /heard of audible?,book.png
+phone,We would like to /talk to you about /your car's extended warranty,phone.png
+paint,RED GREEN BLUE- /o that's it,paint.png
+paintbrushes,Where's the paint /though?,paintbrush.png
+puzzle,It's missing a piece,puzzle.png
+camera,Don't you have a /phone?,camera.png
+origami,It's already folded - /what are you going /to do with it?,origami.png

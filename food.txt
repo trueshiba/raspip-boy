@@ -1,3 +1,10 @@
-Burger,this is a burger
-Hotdog,you won't believe it, this is a hotdog
-Pizza,listen...it's pizza
+chips,Honey Buddha Chips/ my beloved- Where /would I be without /your crunch,chips.png
+bread,That's it? No butter/...No jam? You.../monster,bread.png
+potato,Potato or Potato/...that is the question,potato.png
+salami,How does this /differ from ham exactly?,salami.png
+cake,What flavor is /this?,cake.png
+egg,I'm sorry...an /ENTIRE egg? Is it /cooked?,egg.png
+steak,Perfectly cooked/ like all things /should be,steak.png
+water,It's certainly /a liquid,waterbottle.png
+soda,Fizz,soda.png
+coffee,Black coffee...like my /soul after coding this /project,coffee.png

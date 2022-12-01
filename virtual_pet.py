@@ -18,6 +18,7 @@ maxHunger = 10
 maxRadiation = 10
 maxFun = 10
 
+
 # maybe
 
 # Temporary! Don't know how this stuff works :/
@@ -25,17 +26,15 @@ maxFun = 10
 
 # Increase max stats through level ups
 # (HAPPEN in level.py? See above notes.)
-    
-    
-    
+
+
 # Increase stats through items
 
 
-
 # Determine overall moods (Add stats together and divide by max)
-    # Good Mood - If added together and have >=75%
-    # Meh Mood - If added together and have >=25%
-    # Bad Mood - If added together and have <25%
+# Good Mood - If added together and have >=75%
+# Meh Mood - If added together and have >=25%
+# Bad Mood - If added together and have <25%
 def mood(hung, rads, enjoyment):
     # Calculate radiation value (Reversed from the others)
     rads = maxRadiation - rads
@@ -51,31 +50,39 @@ def mood(hung, rads, enjoyment):
     else:
         setMood("meh")
 
+
 # Getters
 def getHunger():
     return hunger
 
+
 def getRadiation():
     return radiation
+
 
 def getFun():
     return fun
 
+
 def getMood():
     return mood
+
 
 # Setters
 def setHunger(hung):
     global hunger
     hunger = hung
 
+
 def setRadiation(rads):
     global radiation
     radiation = rads
 
+
 def setFun(enjoyment):
     global fun
     fun = enjoyment
+
 
 def setMood(m):
     global mood
@@ -83,16 +90,15 @@ def setMood(m):
 
 
 class Virtual_Pet:
-    def __init__():
+    def __init__(self):
         self.hunger = 115
         self.maxHunger = 115
-        self.text = f'HP {self.health_max} / {self.health_current}'
-        self.time_increase =  0 #so program doesn't constantly open health.txt
-        #CONSTANT
+        #self.text = f'HP {self.health_max} / {self.health_current}'
+        self.time_increase = 0  # so program doesn't constantly open health.txt
+        # CONSTANT
         self.DIVIDER = 12.5217
 
-
-    def update_hunger():
+    def update_hunger(self):
         update = False
 
         # Define the time
@@ -111,10 +117,3 @@ class Virtual_Pet:
         update = True
 
         return update
-
-
-print(Virtual_Pet.update_hunger())
-    
-
-
-    

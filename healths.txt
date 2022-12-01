@@ -1,2 +1,2 @@
-Current Health                    1
+Current Health                    2
 Maximum Health              115

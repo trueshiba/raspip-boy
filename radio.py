@@ -5,7 +5,6 @@ from pygame import mixer
 import os, random
 from pathlib import Path
 import button
-import animation
 import math
 import random
 
@@ -96,8 +95,7 @@ class Radio:
         self.height = 45
         self.fnv_button = button.Button((0, 0, 0, 0), self.x_r, self.y, self.menu_width, 30, "")
         self.backup_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 30, self.menu_width, 30, "")
-        self.off_button = button.Button((0,0,0,0), self.x_r, self.y + 120, self.menu_width, 30, "")
-        self.radio_waves = animation.Animation()
+        self.off_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 120, self.menu_width, 30, "")
 
         self.frequency = 35
         self.amplitude = 30
@@ -171,12 +169,12 @@ class Radio:
             draw_rect_alpha(surf, self.main_color, rect)
 
             display_text(surf, self.x_r + 5, self.y + (y_increase + 3), (52, 68, 52), text)
-            play_music(load_music(folder_name), False, 0, folder_name)
             self.frequency = frequency
             self.counter += 1
             self.final_dance_ultra(surf, 5)
             self.read_file(surf, filename)
-
+            if in_button.is_pressed_promise(surf):
+                play_music(load_music(folder_name), False, 0, folder_name)
         else:
             display_text(surf, self.x_r + 5, self.y + (y_increase + 3), (100, 252, 127), text)
             play_music(load_music(folder_name),  True, 0, folder_name)
