@@ -1,2 +1,2 @@
-Current Health                   38
+Current Health                   25
 Maximum Health              115

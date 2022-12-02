@@ -55,55 +55,56 @@ exit_button = button.Button((0, 0, 0, 0), 460, 10, 10, 30, "x")
 # create level
 level_bar = level.Level()
 
-#create health
+# create health
 health_bar = health.Health()
 
-#create time
+# create time
 time_bar = mish_time.Time()
 
 # define background image
 overlay = pygame.image.load("overlay.png")
 overlay_BIG = pygame.transform.rotozoom(overlay, 0, 2)
 
-#Screen Triggers
+# Screen Triggers
 stat_flag = False
 inv_flag = False
 data_flag = False
 map_flag = False
 radio_flag = False
 
-#create Menus
+# create Menus
 data_menu = data.Data()
 radio_menu = radio.Radio()
-inv_menu = inventory.Inventory()
-map_menu = map.Map()
 pet_menu = virtual_pet.Virtual_Pet()
+inv_menu = inventory.Inventory(pet_menu)
+map_menu = map.Map()
 
 # frames
 image_sprite = [pygame.image.load('pip-animation/pip-0.png'),
-                     pygame.image.load('pip-animation/pip-1.png'),
-                     pygame.image.load('pip-animation/pip-2.png'),
-                     pygame.image.load('pip-animation/pip-3.png'),
-                     pygame.image.load('pip-animation/pip-4.png'),
-                     pygame.image.load('pip-animation/pip-5.png'),
-                     pygame.image.load('pip-animation/pip-6.png'),
-                     pygame.image.load('pip-animation/pip-7.png'),
-                     pygame.image.load('pip-animation/pip-8.png'),
-                     pygame.image.load('pip-animation/pip-9.png'),
-                     pygame.image.load('pip-animation/pip-10.png'),
-                     pygame.image.load('pip-animation/pip-11.png'),
-                     pygame.image.load('pip-animation/pip-12.png'),
-                     pygame.image.load('pip-animation/pip-13.png'),
-                     pygame.image.load('pip-animation/pip-14.png'),
-                     pygame.image.load('pip-animation/pip-15.png'),
-                     pygame.image.load('pip-animation/pip-16.png'),
-                     pygame.image.load('pip-animation/pip-17.png'),
-                     pygame.image.load('pip-animation/pip-18.png'),
-                     pygame.image.load('pip-animation/pip-19.png'),
-                     pygame.image.load('pip-animation/pip-20.png')
-                     ]
+                pygame.image.load('pip-animation/pip-1.png'),
+                pygame.image.load('pip-animation/pip-2.png'),
+                pygame.image.load('pip-animation/pip-3.png'),
+                pygame.image.load('pip-animation/pip-4.png'),
+                pygame.image.load('pip-animation/pip-5.png'),
+                pygame.image.load('pip-animation/pip-6.png'),
+                pygame.image.load('pip-animation/pip-7.png'),
+                pygame.image.load('pip-animation/pip-8.png'),
+                pygame.image.load('pip-animation/pip-9.png'),
+                pygame.image.load('pip-animation/pip-10.png'),
+                pygame.image.load('pip-animation/pip-11.png'),
+                pygame.image.load('pip-animation/pip-12.png'),
+                pygame.image.load('pip-animation/pip-13.png'),
+                pygame.image.load('pip-animation/pip-14.png'),
+                pygame.image.load('pip-animation/pip-15.png'),
+                pygame.image.load('pip-animation/pip-16.png'),
+                pygame.image.load('pip-animation/pip-17.png'),
+                pygame.image.load('pip-animation/pip-18.png'),
+                pygame.image.load('pip-animation/pip-19.png'),
+                pygame.image.load('pip-animation/pip-20.png')
+                ]
 
-#Menu Decor function - draws the little lines on the menu
+
+# Menu Decor function - draws the little lines on the menu
 def menu_deco(start, end):
     # First half
     pygame.draw.line(window_surface, BORDER, (start, 23), (start + 5, 23), width=1)
@@ -163,7 +164,7 @@ while running:
             map_flag = False
             radio_flag = True
 
-        if exit_button.is_pressed(window_surface):
+        if exit_button.is_pressed_promise(window_surface):
             running = False
 
         level_bar.update_level(window_surface)
@@ -174,7 +175,7 @@ while running:
         # if level_bar.is_pressed(window_surface):
         #     print("EXP")
 
-    #Execute screens
+    # Execute screens
     if stat_flag:
         menu_deco(30, 90)
         pet_menu.menu(window_surface)
@@ -189,7 +190,7 @@ while running:
         window_surface.blit(image, (180, 50))
 
         value += 1
-        #pet_menu.draw_bar(window_surface, True)
+        # pet_menu.draw_bar(window_surface, True)
     if inv_flag:
         menu_deco(125, 173)
         inv_menu.menu(window_surface)

@@ -3,6 +3,8 @@ import level
 import random
 import button
 import datetime
+
+import virtual_pet
 import virtual_pet as pet
 
 
@@ -86,7 +88,7 @@ def display_image(surf, filename='', running=''):
 
 
 class Inventory:
-    def __init__(self):
+    def __init__(self, virtual_Pet):
         self.itemList = inventory()
         self.color = (51, 140, 48)
         self.main_color = (88, 243, 100, 180)
@@ -101,6 +103,7 @@ class Inventory:
         self.item_button_3 = button.Button((0, 0, 0, 0), self.x_r, self.y + 60, self.menu_width, self.menu_height, "")
         self.item_button_4 = button.Button((0, 0, 0, 0), self.x_r, self.y + 90, self.menu_width, self.menu_height, "")
         self.item_button_5 = button.Button((0, 0, 0, 0), self.x_r, self.y + 120, self.menu_width, self.menu_height, "")
+        self.vp = virtual_Pet
 
         # Cam Variables
         self.space_available = spaceAvailable()
@@ -139,12 +142,12 @@ class Inventory:
         for item in self.itemList:
             # Use below if statements to call status function of the virtual pet
             # whenever it gets made and stuff
-            # if item[-1] == 'f':
-            #     pet.
-            # if item[-1] == 'h':
-            #
-            # if item[-1] == 't':
-
+            if item[-1] == 'f':
+                self.vp.item_f_increase()
+            if item[-1] == 'h':
+                self.vp.item_h_increase()
+            if item[-1] == 't':
+                self.vp.item_t_increase()
             if item[0:len(item) - 2] == text:
                 self.itemList.remove(item)
 

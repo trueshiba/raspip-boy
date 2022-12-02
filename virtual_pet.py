@@ -42,10 +42,15 @@ def draw_rect_alpha(surf, color, rect):
 class Virtual_Pet:
     def __init__(self):
         # Current stats
-        self.hunger = 115
-        self.radiation = 0
-        self.fun = 5
-        self.mood = "null"
+        # Read Previous Stats from File
+        r = open("pet-rad.txt", "r")
+        h = open("pet-hunger.txt", "r")
+        f = open("pet-fun.txt", "r")
+
+        # Credit to 'AskPython'
+        self.hunger = int(h.readline())
+        self.radiation = int(r.readline())
+        self.fun = int(f.readline())
 
         # Max Stats (Increases with level ups, can change values)
         self.maxHunger = 115
@@ -67,7 +72,7 @@ class Virtual_Pet:
         # Menu Stuff
         self.pip = pygame.transform.scale(pygame.image.load('pipboy.png'), (120, 180))
         self.rad_img = pygame.transform.scale(pygame.image.load('Stat/radiate-green.png'), (25, 25))
-        self.hunger_img = pygame.transform.scale(pygame.image.load('Stat/hunger-green.png'), (25, 25))
+        self.hunger_img = pygame.transform.scale(pygame.image.load('Stat/hunger-green.png'), (22, 22))
         self.fun_img = pygame.transform.scale(pygame.image.load('Stat/fun-green.png'), (25, 25))
 
         self.happy = pygame.transform.scale(pygame.image.load('Stat/happy.png'), (30, 30))
@@ -118,6 +123,9 @@ class Virtual_Pet:
             if total_day % 30 >= 1:
                 self.hunger = self.maxHunger - int((total_day // self.DIVIDER))
                 self.time_increase_hung = total_day
+
+                f = open("pet-hunger.txt", "w")
+                f.write(str(self.hunger))
         update = True
         return update
 
@@ -134,6 +142,10 @@ class Virtual_Pet:
             if total_day % 30 >= 1:
                 self.radiation = self.radiation + int((total_day // self.DIVIDER))
                 self.time_increase_rad = total_day
+
+                f = open("pet-rad.txt", "w")
+                f.write(str(self.radiation))
+
         update = True
         return update
 
@@ -150,6 +162,9 @@ class Virtual_Pet:
             if total_day % 30 >= 1:
                 self.fun = self.maxFun - int((total_day // self.DIVIDER))
                 self.time_increase_fun = total_day
+
+                f = open("pet-fun.txt", "w")
+                f.write(str(self.fun))
         update = True
         return update
 
@@ -180,9 +195,9 @@ class Virtual_Pet:
     # Determine overall moods (Add stats together and divide by max)
     def find_mood(self, surf):
         # Calculate radiation value (Reversed from the others)
-        # self.radiation = self.maxRadiation - self.radiation
+        rad = self.maxRadiation - self.radiation
 
-        currentTotal = self.hunger + self.radiation + self.fun
+        currentTotal = self.hunger + rad + self.fun
         maxTotal = self.maxHunger + self.maxRadiation + self.maxFun
         percent = currentTotal / maxTotal
 
@@ -235,7 +250,7 @@ class Virtual_Pet:
         stat_font = pygame.font.SysFont('arial', 18)
 
         surf.blit(stat_font.render(str(self.getHunger()), False, TEXT_COL), (229, 265))
-        surf.blit(stat_font.render(str(self.getFun()), False, TEXT_COL), (273, 265))
+        surf.blit(stat_font.render(str(self.getFun()), False, TEXT_COL), (265, 265))
         surf.blit(stat_font.render(str(self.getRadiation()), False, TEXT_COL), (307, 265))
 
         self.find_mood(surf)
