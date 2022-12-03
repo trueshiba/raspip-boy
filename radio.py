@@ -95,7 +95,9 @@ class Radio:
         self.height = 45
         self.fnv_button = button.Button((0, 0, 0, 0), self.x_r, self.y, self.menu_width, 30, "")
         self.backup_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 30, self.menu_width, 30, "")
-        self.off_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 120, self.menu_width, 30, "")
+        self.meme_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 60, self.menu_width, 30, "")
+        self.nightcore_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 90, self.menu_width, 30, "")
+        self.off_button = button.Button((0,0,0,0), self.x_r, self.y + 150, self.menu_width, 30, "")
 
         self.frequency = 35
         self.amplitude = 30
@@ -193,5 +195,7 @@ class Radio:
 
     def menu(self, surf):
         self.tab(surf, 0, self.fnv_button, 30, "radio_FNV", "radio_FNV.txt", "Fallout New Vegas")
-        self.tab(surf, 30, self.backup_button, 0, "radio_TEST", "radio_FNV.txt", "Fallout Old Vegas")
-        self.off(surf, 120, self.off_button, "Turn Off Radio")
+        self.tab(surf, 30, self.backup_button, 0, "radio_TEST", "radio_FNV.txt", "Fallout Old Vegas") # edit
+        self.tab(surf, 60, self.backup_button, 30, "radio_FUN", "radio_FUN.txt", "Kamila Radio")
+        self.tab(surf, 90, self.backup_button, 0, "radio_NIGHTCORE", "radio_NIGHTCORE.txt", "Nightcore")
+        self.off(surf, 150, self.off_button, "Turn Off Radio")
