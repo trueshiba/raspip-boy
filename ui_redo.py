@@ -170,6 +170,9 @@ while running:
         level_bar.update_level(window_surface)
         health_bar.update_health(window_surface)
         time_bar.update_time(window_surface)
+        pet_menu.update_radiation()
+        pet_menu.update_hunger()
+        pet_menu.update_fun()
 
         # [For Testing Purposes Only]
         # if level_bar.is_pressed(window_surface):

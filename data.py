@@ -50,9 +50,9 @@ class Data:
         self.height = 45
         self.health_button = button.Button((0, 0, 0, 0), self.x_r, self.y, self.menu_width, 30, "")
         self.level_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 30, self.menu_width, 30, "")
-        self.steps_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 60, self.menu_width, 30, "")
+        self.random_button_2 = button.Button((0, 0, 0, 0), self.x_r, self.y + 60, self.menu_width, 30, "")
         self.random_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 90, self.menu_width, 30, "")
-        self.random_button_2 = button.Button((0, 0, 0, 0), self.x_r, self.y + 120, self.menu_width, 30, "")
+        #self.random_button_2 = button.Button((0, 0, 0, 0), self.x_r, self.y + 120, self.menu_width, 30, "")
         # CONSTANT
         self.DIVIDER = 12.5217
 
@@ -94,7 +94,7 @@ class Data:
     def menu(self, surf):
         self.tab(surf, 0, self.health_button, "healths.txt", "Health")
         self.tab(surf, 30, self.level_button, "level.txt", "Levels")
-        #self.tab(surf, 60, self.steps_button, "Steps")
+        self.tab(surf, 60, self.random_button_2, "random_2.txt", "Collection")
         self.tab(surf, 90, self.random_button, "random.txt", "General")
         # create buttons
         # self.health_button.draw(surf)

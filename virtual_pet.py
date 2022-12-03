@@ -53,9 +53,9 @@ class Virtual_Pet:
         self.fun = int(f.readline())
 
         # Max Stats (Increases with level ups, can change values)
-        self.maxHunger = 115
-        self.maxRadiation = 115
-        self.maxFun = 115
+        self.maxHunger = 60
+        self.maxRadiation = 60
+        self.maxFun = 60
 
         self.time_increase_hung = 0
         self.time_increase_rad = 0
@@ -64,7 +64,10 @@ class Virtual_Pet:
         self.rand_stat_range = 10
 
         # CONSTANT
-        self.DIVIDER = 12.5217
+        self.DIVIDER_HUNGER = (1140 / maxHunger)
+        self.DIVIDER_FUN = (1140 / maxFun)
+        self.DIVIDER_RADIATION = (1140 / maxRadiation)
+
         self.HUNGPERCENT = 0.55
         self.RADSPERCENT = 0.30
         self.FUNPERCENT = 0.65
@@ -121,7 +124,7 @@ class Virtual_Pet:
         # Set hunger based on current time
         if total_day > (self.time_increase_hung + 10):
             if total_day % 30 >= 1:
-                self.hunger = self.maxHunger - int((total_day // self.DIVIDER))
+                self.hunger = self.maxHunger - int((total_day // self.DIVIDER_HUNGER))
                 self.time_increase_hung = total_day
 
                 f = open("pet-hunger.txt", "w")
@@ -140,7 +143,7 @@ class Virtual_Pet:
         # Set radiation based on current time (More rather than less)
         if total_day > (self.time_increase_rad + 10):
             if total_day % 30 >= 1:
-                self.radiation = self.radiation + int((total_day // self.DIVIDER))
+                self.radiation = self.radiation + int((total_day // self.DIVIDER_RADIATION))
                 self.time_increase_rad = total_day
 
                 f = open("pet-rad.txt", "w")
@@ -160,7 +163,7 @@ class Virtual_Pet:
         # Set fun based on current time
         if total_day > (self.time_increase_fun + 10):
             if total_day % 30 >= 1:
-                self.fun = self.maxFun - int((total_day // self.DIVIDER))
+                self.fun = self.maxFun - int((total_day // self.DIVIDER_FUN))
                 self.time_increase_fun = total_day
 
                 f = open("pet-fun.txt", "w")
@@ -177,6 +180,9 @@ class Virtual_Pet:
             self.maxRadiation = self.maxRadiation + 1
         if random.random() < self.FUNPERCENT:
             self.maxFun = self.maxFun + 1
+        self.DIVIDER_HUNGER = (1140 / maxHunger)
+        self.DIVIDER_FUN = (1140 / maxFun)
+        self.DIVIDER_RADIATION = (1140 / maxRadiation)
         self.rand_stat_range += 4
 
     # Increase current stats through items (in a random range that increases as you level, see above function)

@@ -1,6 +1,6 @@
 import pygame
 from pygameZoom import PygameZoom
-img = pygame.image.load('maps.jpg')
+img = pygame.image.load('map.jpg')
 
 class Map:
     def __init__(self):

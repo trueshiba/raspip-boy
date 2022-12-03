@@ -1,10 +1,10 @@
-toothbrush,I- where's your toothpaste,toothbrush.png
-soap,This is...a bar of soap,soap.png
-hairbrush,Do need this right now?,hairbrush.png
-tissue,...Gross,tissue.png
-deodorant,I was wondering when you were going to use this,deodorant.png
-towel,Why are you wet?,towel.png
-shampoo,Scrub a dub-dub,shampoo.png
-toothpaste,No toothbrush? Just the paste??,toothpaste.png
-lotion,It's wet...,lotion.png
-chapstick,The flavor of mint is /strong in this one,chapstick.png
+Toothbrush,I- where's your toothpaste,toothbrush.png
+Soap,This is...a bar of soap,soap.png
+Hairbrush,Do need this right now?,hairbrush.png
+Tissue,...Gross,tissue.png
+Deodorant,I was wondering when you were going to use this,deodorant.png
+Towel,Why are you wet?,towel.png
+Shampoo,Scrub a dub-dub,shampoo.png
+Toothpaste,No toothbrush? Just the paste??,toothpaste.png
+Lotion,It's wet...,lotion.png
+Chapstick,The flavor of mint is /strong in this one,chapstick.png
