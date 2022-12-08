@@ -103,6 +103,11 @@ image_sprite = [pygame.image.load('pip-animation/pip-0.png'),
                 pygame.image.load('pip-animation/pip-20.png')
                 ]
 
+#Draw Rectangle Background
+def draw_rect_alpha(surf, color, rect):
+    shape = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
+    pygame.draw.rect(shape, color, shape.get_rect())
+    surf.blit(shape, rect)
 
 # Menu Decor function - draws the little lines on the menu
 def menu_deco(start, end):
@@ -121,6 +126,7 @@ def menu_deco(start, end):
 running = True
 clock = pygame.time.Clock()
 value = 0
+walk_flag = False
 
 while running:
 
@@ -142,6 +148,7 @@ while running:
             data_flag = False
             map_flag = False
             radio_flag = False
+            walk_flag = False
 
         if data_button.is_pressed(window_surface):
             stat_flag = False
@@ -149,6 +156,7 @@ while running:
             data_flag = True
             map_flag = False
             radio_flag = False
+            walk_flag = False
 
         if map_button.is_pressed(window_surface):
             stat_flag = False
@@ -156,6 +164,7 @@ while running:
             data_flag = False
             map_flag = True
             radio_flag = False
+            walk_flag = False
 
         if radio_button.is_pressed(window_surface):
             stat_flag = False
@@ -163,11 +172,12 @@ while running:
             data_flag = False
             map_flag = False
             radio_flag = True
+            walk_flag = False
 
         if exit_button.is_pressed_promise(window_surface):
             running = False
 
-        level_bar.update_level(window_surface)
+        level_bar.update_level(window_surface, walk_flag)
         health_bar.update_health(window_surface)
         time_bar.update_time(window_surface)
         pet_menu.update_radiation()
@@ -193,7 +203,14 @@ while running:
         window_surface.blit(image, (180, 50))
 
         value += 1
-        # pet_menu.draw_bar(window_surface, True)
+
+        # Walk Button
+        walk_button = button.Button((0, 0, 0, 0), 10, 250, 90, 30, "Walk")
+        rect = (10, 250), (90, 30)
+        draw_rect_alpha(window_surface, (51, 109, 48, 200), rect)
+        if walk_button.is_pressed_promise(window_surface):
+            walk_flag = True
+
     if inv_flag:
         menu_deco(125, 173)
         inv_menu.menu(window_surface)

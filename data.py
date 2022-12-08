@@ -96,6 +96,8 @@ class Data:
         self.tab(surf, 30, self.level_button, "level.txt", "Levels")
         self.tab(surf, 60, self.random_button_2, "random_2.txt", "Collection")
         self.tab(surf, 90, self.random_button, "random.txt", "General")
+        rect = (self.x_l - 7, self.y - 5), (247, 238)
+        draw_rect_alpha(surf, (88, 243, 100, 15), rect)
         # create buttons
         # self.health_button.draw(surf)
         # self.level_button.draw(surf)

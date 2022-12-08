@@ -29,6 +29,8 @@ NOTES:
 import datetime
 import random
 import pygame
+import button
+import level
 
 
 # Credit to [Mish]
@@ -81,7 +83,6 @@ class Virtual_Pet:
         self.happy = pygame.transform.scale(pygame.image.load('Stat/happy.png'), (30, 30))
         self.sad = pygame.transform.scale(pygame.image.load('Stat/sad.png'), (30, 30))
         self.meh = pygame.transform.scale(pygame.image.load('Stat/meh.png'), (30, 30))
-
 
         self.color = (51, 109, 48, 200)
 
@@ -257,9 +258,11 @@ class Virtual_Pet:
 
         surf.blit(stat_font.render(str(self.getHunger()), False, TEXT_COL), (229, 265))
         surf.blit(stat_font.render(str(self.getFun()), False, TEXT_COL), (265, 265))
-        surf.blit(stat_font.render(str(self.getRadiation()), False, TEXT_COL), (307, 265))
+        surf.blit(stat_font.render(str(self.getRadiation()), False, TEXT_COL), (300, 265))
 
         self.find_mood(surf)
+        level.Level().update_level(surf, False)
+
 
 
     # surf.blit("MOOD", (self.x + 5, self.y))

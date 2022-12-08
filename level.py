@@ -157,22 +157,21 @@ class Level:
         rect = (self.x, self.y), (self.width, self.height)
         draw_rect_alpha(surf, self.color, rect)
 
-    def update_level(self, surf):
+    def update_level(self, surf, flag):
         self.draw(surf)
         update = False
-        Pedometer_Status = False
+        Pedometer_Status = flag
 
         # get Accelerometer Info - replace True with accelerometer check
-        while update:
-            if Pedometer_Status:
-                gainExp()
+        if Pedometer_Status:
+            gainExp()
 
-                # Update Data in Level File
-                f = open("level.txt", "w")
-                f.write(f'Current Level {self.level:>23}\n')
-                f.write(f"Current XP {self.exp:>26}\n")
-                f.write(f"XP Needed {self.exp_total:>25}\n")
-                f.close()
+            # Update Data in Level File
+            f = open("level.txt", "w")
+            f.write(f'Current Level {self.level:>23}\n')
+            f.write(f"Current XP {self.exp:>26}\n")
+            f.write(f"XP Needed {self.exp_total:>25}\n")
+            f.close()
 
         self.level = getLevel()
         self.exp = getExp()
@@ -210,4 +209,5 @@ class Level:
 
         #send result
         return action
+
 

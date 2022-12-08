@@ -205,4 +205,7 @@ class Inventory:
                 sep += 30
                 index += 1
 
+        rect = (self.x_l - 7, self.y - 5), (180, 241)
+        draw_rect_alpha(surf, (88, 243, 100, 15), rect)
+
         self.update_inv()

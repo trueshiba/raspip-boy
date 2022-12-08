@@ -97,6 +97,7 @@ class Radio:
         self.backup_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 30, self.menu_width, 30, "")
         self.meme_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 60, self.menu_width, 30, "")
         self.nightcore_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 90, self.menu_width, 30, "")
+        self.james_button = button.Button((0, 0, 0, 0), self.x_r, self.y + 120, self.menu_width, 30, "")
         self.off_button = button.Button((0,0,0,0), self.x_r, self.y + 150, self.menu_width, 30, "")
 
         self.frequency = 35
@@ -195,7 +196,10 @@ class Radio:
 
     def menu(self, surf):
         self.tab(surf, 0, self.fnv_button, 30, "radio_FNV", "radio_FNV.txt", "Fallout New Vegas")
-        self.tab(surf, 30, self.backup_button, 0, "radio_TEST", "radio_FNV.txt", "Fallout Old Vegas") # edit
-        self.tab(surf, 60, self.backup_button, 30, "radio_FUN", "radio_FUN.txt", "Kamila Radio")
-        self.tab(surf, 90, self.backup_button, 0, "radio_NIGHTCORE", "radio_NIGHTCORE.txt", "Nightcore")
+        self.tab(surf, 30, self.backup_button, 0, "radio_TEST", "radio_TEST.txt", "Day Time News") # edit
+        self.tab(surf, 60, self.meme_button, 69, "radio_FUN", "radio_FUN.txt", "Kamila Radio")
+        self.tab(surf, 90, self.nightcore_button, 12, "radio_NIGHTCORE", "radio_NIGHTCORE.txt", "Nightcore")
+        self.tab(surf, 120, self.james_button, 24, "radio_James", "radio_James.txt", "James Eddy FM")
         self.off(surf, 150, self.off_button, "Turn Off Radio")
+        rect = (self.x_l - 7, self.y - 5), (247, 241)
+        draw_rect_alpha(surf, (88, 243, 100, 15), rect)
