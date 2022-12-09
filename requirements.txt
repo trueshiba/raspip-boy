@@ -1,0 +1,8 @@
+pip
+pygame
+os
+pathlib
+random
+datetime
+pygame_gui
+time

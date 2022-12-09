@@ -29,7 +29,6 @@ NOTES:
 import datetime
 import random
 import pygame
-import button
 import level
 
 

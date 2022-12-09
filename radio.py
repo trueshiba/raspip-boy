@@ -1,12 +1,13 @@
-import time
+import math
+import os
+import random
+from pathlib import Path
 
 import pygame
 from pygame import mixer
-import os, random
-from pathlib import Path
+
 import button
-import math
-import random
+
 
 # draw rect but with transparency
 def draw_rect_alpha(surf, color, rect):
@@ -71,19 +72,15 @@ def exit_radio():
     mixer.music.unload()
 
 
-'''
-The Radio Class for the PipBoy
-    This will be where the radio goes, it should display the radio as well as a little visual thing on the side
-    but that's for later
-    Notes:
-    Fix Radio buttons
-    Theory- when set to false, what happens is the function is called and it get uncalled, unlinke when we
-    use TRUE or something along those lines. Further testing may be need, but perhaps changing how the play music 
-    function works could help??
-'''
-
 
 class Radio:
+    """
+    Radio Class
+    The radio class creates the radio tab for the Pip-Boy alongside displaying the different radio channels.
+    The radio channels are made using folders, which contain mp3 files that get added to a list and then shuffled,
+    inorder to simulate how a radio works. The music will continue to play until the user presses the Turn Off Radio
+    Button
+    """
 
     def __init__(self):
         self.color = (51, 140, 48)
